@@ -1,0 +1,22 @@
+{
+  "name": "americano.sch",
+  "version": "1.0.0",
+  "description": "",
+  "main": "app.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/daathz/americano.sch.git"
+  },
+  "author": "Viktor Novák",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/daathz/americano.sch/issues"
+  },
+  "homepage": "https://github.com/daathz/americano.sch#readme",
+  "devDependencies": {
+    "eslint": "^5.13.0"
+  }
+}
