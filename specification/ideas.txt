@@ -1,0 +1,23 @@
+Database
+  Food
+    id
+    name
+    description
+
+  User
+    id
+    name
+    email
+    room_number
+
+  Order
+    customer (user_name)
+    room (user_room_number)
+    food (food_name)
+    quantity
+    comment
+
+  Event
+    date
+    capacity
+    orders (order, collection)
