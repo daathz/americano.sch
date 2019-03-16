@@ -1,7 +1,14 @@
 .card {
-    margin-top: 20px;
-    margin-bottom: 20px;
+  margin-top: 20px;
+  margin-bottom: 20px;
 }
+
 .food-counter {
-    margin-bottom: 60px;
+  margin-top: 20px;
+  margin-bottom: 90px;
+}
+
+.food-delete-button {
+  margin-top: 20px;
+  margin-bottom: 90px;
 }
