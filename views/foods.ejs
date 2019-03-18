@@ -1,0 +1,23 @@
+<% include ./partials/header %>
+<div class="row">
+    <div class="col-md-5 offset-md-1">
+        <% foods.forEach(function(food) { %>
+            <div class="card" style="margin-bottom: 20px;">
+                <div class="card-body">
+                    <h5 class="card-title"><%= food.name %></h5>
+                    <p class="card-text"><%= food.description %></p>
+                    <a class="btn btn-info" href="/foods/<%= food._id %>">Update</a>
+                    <a class="btn btn-danger" href="#">Remove</a>
+                </div>
+            </div>
+        <% }) %>
+    </div>
+</div>
+<div class="row">
+    <div class="col-md-5 offset-md-1">
+        <a href="/foods/new">
+            <button class="btn btn-primary" style="margin-top: 10px;">Add Food</button>
+        </a>
+    </div>
+</div>
+<% include ./partials/footer %>

@@ -1,5 +1,5 @@
 const authUserMW = require('../middlewares/user/authUser')
-const createOrderMW = require('../middlewares/order/createOrder')
+const updateOrderMW = require('../middlewares/order/updateOrder')
 const getOrderOfUserMW = require('../middlewares/order/getOrdersOfUser')
 const deleteOrderMW = require('../middlewares/order/deleteOrder')
 const getFoodListMW = require('../middlewares/food/getFoods')
@@ -14,12 +14,20 @@ module.exports = (app) => {
     getOrderOfUserMW(objRepo),
     renderMW(objRepo, 'order'))
 
-  app.use('/order',
+  app.post('/order/',
     authUserMW(objRepo),
-    createOrderMW(objRepo),
-    renderMW(objRepo, 'order'))
+    updateOrderMW(objRepo),
+    (req, res) => {
+      console.log('order')
+      return res.redirect('/order')
+    })
 
-  app.use('/order/delete',
+  app.use('/order/:orderid',
+    authUserMW(objRepo),
+    updateOrderMW(objRepo),
+    renderMW(objRepo, 'editorder'))
+
+  app.use('/order/delete/:orderid',
     authUserMW(objRepo),
     deleteOrderMW(objRepo),
     renderMW(objRepo, 'order'))

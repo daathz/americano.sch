@@ -1,7 +1,7 @@
 const authUserMW = require('../middlewares/user/authUser')
 const getFoodListMW = require('../middlewares/food/getFoods')
 const deleteFoodMW = require('../middlewares/food/deleteFood')
-const createFoodMW = require('../middlewares/food/createFood')
+const updateFoodMW = require('../middlewares/food/updateFood')
 const renderMW = require('../middlewares/render')
 
 
@@ -13,13 +13,18 @@ module.exports = (app) => {
     getFoodListMW(objRepo),
     renderMW(objRepo, 'foods'))
 
-  app.use('/foods/new',
+  app.get('/foods/new',
     authUserMW(objRepo),
-    createFoodMW(objRepo),
+    updateFoodMW(objRepo),
+    renderMW(objRepo, 'newfood'))
+
+  app.get('/foods/:foodid',
+    authUserMW(objRepo),
+    updateFoodMW(objRepo),
     renderMW(objRepo, 'newfood'))
 
   app.use('/foods/delete',
     authUserMW(objRepo),
     deleteFoodMW(objRepo),
-    renderMW(objRepo, 'foodlist'))
+    renderMW(objRepo, 'foods'))
 }

@@ -1,0 +1,33 @@
+<% include ./partials/header %>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <table class="table table-hover table-striped">
+            <tr class="table-secondary">
+                <th>Name</th>
+                <th>Room</th>
+                <th>Food</th>
+                <th>Quantity</th>
+                <th>Comments</th>
+                <th></th>
+            </tr>
+            <% orders.forEach(function(order) { %>
+                <tr>
+                    <td><%= order.name %></td>
+                    <td><%= order.room %></td>
+                    <td><%= order.food %></td>
+                    <td><%= order.quantity %></td>
+                    <td><%= order.comment %></td>
+                    <td><a href="/order/<%= order._id %>">
+                            <button class="btn btn-info">Update</button>
+                        </a>
+                        <a href="/order/delete/<%= order._id %>">
+                            <button class="btn btn-danger">
+                                Delete
+                            </button>
+                        </a></td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+<% include ./partials/footer %>

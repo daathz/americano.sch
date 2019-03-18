@@ -3,6 +3,6 @@
  */
 module.exports = (objRepo, view) => {
   return (req, res) => {
-    res.render(view)
+    res.render(view, res.tpl)
   }
 }

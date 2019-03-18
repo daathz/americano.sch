@@ -21,6 +21,8 @@
     "nodemon": "^1.18.10"
   },
   "dependencies": {
+    "dateformat": "^3.0.3",
+    "ejs": "^2.6.1",
     "express": "^4.16.4"
   }
 }

@@ -1,0 +1,29 @@
+<% include ./partials/header %>
+<div class="col-md offset-md-1">
+    <a href="/events/new">
+        <button class="btn btn-primary" style="margin-bottom: 20px;">Add Event</button>
+    </a>
+</div>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <table class="table table-hover table-striped">
+            <tr class="table-secondary">
+                <th>#</th>
+                <th>Start</th>
+                <th>End</th>
+                <th>Number of Orders</th>
+                <th>Orders</th>
+            </tr>
+            <% events.forEach(function(event) { %>
+                <td><%= event._id %></td>
+                <td><%= event.start %></td>
+                <td><%= event.end %></td>
+                <td><%= event.numberOfOrders %></td>
+                <td><a href="/events/<%= event._id %>">
+                        <button class="btn btn-link">Orders</button>
+                    </a></td>
+            <% }) %>
+        </table>
+    </div>
+</div>
+<% include ./partials/footer %>
