@@ -14,11 +14,10 @@ module.exports = (app) => {
     getOrderOfUserMW(objRepo),
     renderMW(objRepo, 'order'))
 
-  app.post('/order/',
+  app.post('/order',
     authUserMW(objRepo),
     updateOrderMW(objRepo),
     (req, res) => {
-      console.log('order')
       return res.redirect('/order')
     })
 

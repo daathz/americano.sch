@@ -12,7 +12,7 @@ module.exports = (app) => {
     getEventsMW(objRepo),
     renderMW(objRepo, 'events'))
 
-  app.get('/events/new',
+  app.use('/events/new',
     authAdminMW(objRepo),
     createEventMW(objRepo),
     renderMW(objRepo, 'newevent'))

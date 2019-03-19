@@ -1,14 +1,14 @@
 <% include ./partials/header %>
 <div class="col-md-4 offset-md-4">
     <h2>Add Event</h2>
-    <form>
+    <form method="POST">
         <div class="form-group">
             <label for="startEvent">Start of Event</label>
-            <input type="date" class="form-control" id="startEvent">
+            <input type="date" class="form-control" id="startEvent" name="startevent">
         </div>
         <div class="form-group">
             <label for="endEvent">End of Event</label>
-            <input type="date" class="form-control" id="endEvent">
+            <input type="date" class="form-control" id="endEvent" name="endevent">
         </div>
         <button type="submit" class="btn btn-primary btn-block" style="margin-right: 10px;">Create</button>
     </form>

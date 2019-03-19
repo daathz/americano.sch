@@ -17,7 +17,7 @@ module.exports = (app) => {
     redirectMW(objRepo))
 
 
-  app.get('/login',
+  app.use('/login',
     authUserMW(objRepo),
     loginUserMW(objRepo),
     renderMW(objRepo, 'login'))
@@ -35,13 +35,4 @@ module.exports = (app) => {
   app.get('logout',
     logoutUserMW(objRepo),
     (req, res) => res.redirect('/'))
-
-  app.get('/orders',
-    authUserMW(objRepo),
-    getOrdersMW(objRepo),
-    renderMW(objRepo, 'orders'))
-  app.use('/orders/delete',
-    authUserMW(objRepo),
-    deleteOrderMW(objRepo),
-    renderMW(objRepo, 'orders'))
 }
