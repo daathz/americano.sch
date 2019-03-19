@@ -6,16 +6,12 @@ const forgotPasswordMW = require('../middlewares/user/forgotPassword')
 const logoutUserMW = require('../middlewares/user/logoutUser')
 const renderMW = require('../middlewares/render')
 
-const deleteOrderMW = require('../middlewares/order/deleteOrder')
-const getOrdersMW = require('../middlewares/order/getAllOrder')
-
 module.exports = (app) => {
   let objRepo = {}
 
 
   app.get('/',
     redirectMW(objRepo))
-
 
   app.use('/login',
     authUserMW(objRepo),

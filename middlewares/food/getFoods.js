@@ -5,12 +5,12 @@ module.exports = (objRepo) => {
   return (req, res, next) => {
     res.tpl.foods = [
       {
-        _id: 1, name: 'Hamburger', seo_name: 'hamburger', description: 'óriás buci, marhahús, ' +
+        _id: 1, name: 'Hamburger', description: 'óriás buci, marhahús, ' +
           'saláta, paradicsom, uborka, hagyma, sajt, ketchup,' +
           'mustár, majonéz, speckó szósz', admin: false
       },
       {
-        _id: 1, name: 'Hot-dog', seo_name: 'hotdog', description: 'friss kifli, pulykavirsli, ' +
+        _id: 1, name: 'Hot-dog', description: 'friss kifli, pulykavirsli, ' +
           'saláta, paradicsom, uborka, hagyma, ketchup, mustár, majonéz, sajt',
         admin: false
       }

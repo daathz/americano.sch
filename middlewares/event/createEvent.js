@@ -1,3 +1,6 @@
 module.exports = (objRepo) => {
-  return (req, res, next) => next()
+  return (req, res, next) => {
+    console.log(req.body)
+    return next()
+  }
 }
