@@ -28,7 +28,7 @@ module.exports = (app) => {
     forgotPasswordMW(objRepo),
     renderMW(objRepo, 'forgot'))
 
-  app.get('logout',
+  app.get('/logout',
     logoutUserMW(objRepo),
     (req, res) => res.redirect('/'))
 }
