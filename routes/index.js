@@ -6,25 +6,26 @@ const forgotPasswordMW = require('../middlewares/user/forgotPassword')
 const logoutUserMW = require('../middlewares/user/logoutUser')
 const renderMW = require('../middlewares/render')
 
+const userModel = require('../models/user')
+
 module.exports = (app) => {
-  let objRepo = {}
+  let objRepo = {
+    userModel: userModel
+  }
 
 
   app.get('/',
     redirectMW(objRepo))
 
   app.use('/login',
-    authUserMW(objRepo),
     loginUserMW(objRepo),
     renderMW(objRepo, 'login'))
 
   app.use('/register',
-    authUserMW(objRepo),
     createUserMW(objRepo),
     renderMW(objRepo, 'register'))
 
   app.use('/forgot',
-    authUserMW(objRepo),
     forgotPasswordMW(objRepo),
     renderMW(objRepo, 'forgot'))
 

@@ -3,6 +3,10 @@
  */
 module.exports = (objRepo) => {
   return (req, res) => {
-    res.redirect('/login')
+    if (req.session.userid === 'undefined') {
+      return res.redirect('/login')
+    } else {
+      return res.redirect('/order')
+    }
   }
 }

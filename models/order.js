@@ -3,7 +3,10 @@ const db = require('../config/db')
 
 module.exports = db.model('Order', {
   comment: String,
-  quantity: Number,
+  quantity: {
+    type: Number,
+    min: 1
+  },
   _user: {
     type: Schema.Types.ObjectId,
     ref: 'User'

@@ -3,8 +3,14 @@ const db = require('../config/db')
 
 module.exports = db.model('User', {
   name: String,
-  room: Number,
+  room: {
+    type: Number,
+    min: 1
+  },
   email: String,
   password: String,
-  admin: Boolean
+  admin: {
+    type: Boolean,
+    default: false
+  }
 })

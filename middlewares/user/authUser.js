@@ -3,7 +3,10 @@
  */
 module.exports = (objRepo) => {
   return (req, res, next) => {
-    req.session.userid === 112 ? res.tpl.isUser = true : res.tpl.isUser = false
+
+    if (typeof req.session.userid === 'undefined') {
+      return res.redirect('/login')
+    }
     return next()
   }
 }
