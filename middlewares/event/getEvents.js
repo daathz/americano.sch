@@ -1,13 +1,11 @@
-const dateFormat = require('dateformat')
+const moment = require('moment')
 
 module.exports = (objRepo) => {
   return (req, res, next) => {
     res.tpl.events = [
       {
-        _id: 1, start: dateFormat(new Date(2019, 2, 17, 0, 0),
-          'yyyy-mm-dd HH:MM'),
-        end: dateFormat(new Date(2019, 3, 28, 23, 59),
-          'yyyy-mm-dd HH:MM'),
+        _id: 1, start: moment('2019-02-17').format('YYYY-MM-DD HH:mm'),
+        end: moment('2019-03-28').format('YYYY-MM-DD HH:mm'),
         numberOfOrders: 6
       }
     ]
