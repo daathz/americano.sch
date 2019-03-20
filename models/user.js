@@ -1,7 +1,7 @@
 const Schema = require('mongoose').Schema
 const db = require('../config/db')
 
-module.exports = db.model('User', {
+module.exports = db.model('User', Schema({
   name: String,
   room: {
     type: Number,
@@ -11,6 +11,7 @@ module.exports = db.model('User', {
   password: String,
   admin: {
     type: Boolean,
-    default: false
+    //for dev
+    default: true
   }
-})
+}))

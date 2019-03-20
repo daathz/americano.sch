@@ -6,9 +6,11 @@ module.exports = (objRepo) => {
 
   return (req, res, next) => {
 
-    if ((typeof req.body === 'undefined') || (typeof req.body.email === 'undefined') ||
+    if ((typeof req.body === 'undefined') ||
+      (typeof req.body.email === 'undefined') ||
       (typeof req.body.password === 'undefined') ||
-      (typeof req.body.name === 'undefined') || (typeof req.body.room === 'undefined')) {
+      (typeof req.body.name === 'undefined') ||
+      (typeof req.body.room === 'undefined')) {
       return next()
     }
 

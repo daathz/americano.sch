@@ -24,6 +24,11 @@
       "error",
       "never"
     ],
+    "max-len": [
+      "error", {
+        "code": 80
+      }
+    ],
     "no-console": "off",
     "no-unused-vars": "warn"
   }

@@ -1,12 +1,11 @@
 const Schema = require('mongoose').Schema
 const db = require('../config/db')
 
-module.exports = db.model('Order', {
+module.exports = db.model('Order', Schema({
   comment: String,
-  quantity: {
-    type: Number,
-    min: 1
-  },
+  customer: String,
+  room: Number,
+  foods: [],
   _user: {
     type: Schema.Types.ObjectId,
     ref: 'User'
@@ -15,8 +14,4 @@ module.exports = db.model('Order', {
     type: Schema.Types.ObjectId,
     ref: 'Event'
   },
-  _food: {
-    type: Schema.Types.ObjectId,
-    ref: 'Food'
-  }
-})
+}))
