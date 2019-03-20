@@ -5,11 +5,11 @@ const deleteOrderMW = require('../middlewares/order/deleteOrder')
 const getFoodListMW = require('../middlewares/food/getFoods')
 const renderMW = require('../middlewares/render')
 
-const userModel = require('../models/user')
+const foodModel = require('../models/food')
 
 module.exports = (app) => {
   let objRepo = {
-    userModel: userModel
+    foodModel: foodModel
   }
 
   app.get('/order',

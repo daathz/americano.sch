@@ -7,7 +7,7 @@
                     <h5 class="card-title"><%= food.name %></h5>
                     <p class="card-text"><%= food.description %></p>
                     <a class="btn btn-info" href="/foods/<%= food._id %>">Update</a>
-                    <a class="btn btn-danger" href="#">Remove</a>
+                    <a class="btn btn-danger" href="/foods/<%= food._id %>/delete">Remove</a>
                 </div>
             </div>
         <% }) %>

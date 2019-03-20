@@ -2,14 +2,15 @@
 <div class="row">
     <div class="col-md-4 offset-md-1">
         <h2>New Food</h2>
-        <form>
+        <form method="POST">
             <div class="form-group">
-                <label for="InputName">Food name</label>
-                <input type="text" class="form-control" id="InputName" placeholder="Name">
+                <label for="name">Food name</label>
+                <input type="text" class="form-control" id="name" name="name" placeholder="Name"
+                value="<%= (typeof food !== 'undefined') ? food.name : '' %>">
             </div>
             <div class="form-group">
-                <label for="InputDescription">Description</label><br>
-                <textarea class="form-control" name="Description" id="InputDescription"></textarea>
+                <label for="description">Description</label><br>
+                <textarea class="form-control" name="description" id="description"><%= (typeof food !== 'undefined') ? food.description : '' %></textarea>
             </div>
             <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Add Food</button>
         </form>

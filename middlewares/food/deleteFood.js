@@ -2,5 +2,14 @@
  * Delete the selected food from database
  */
 module.exports = (objRepo) => {
-  return (req, res, next) => next
+
+  let foodModel = objRepo.foodModel
+
+  return (req, res, next) => {
+
+    foodModel.findOneAndDelete({ _id: req.params.foodid}, (err, result) => {
+      if (err) console.log(err)
+      return next()
+    })
+  }
 }

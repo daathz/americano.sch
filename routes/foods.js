@@ -1,7 +1,9 @@
 const authUserMW = require('../middlewares/user/authUser')
 const authAdminMW = require('../middlewares/user/authAdmin')
+const getFoodMW = require('../middlewares/food/getFoodById')
 const getFoodListMW = require('../middlewares/food/getFoods')
 const deleteFoodMW = require('../middlewares/food/deleteFood')
+const createFoodMW = require('../middlewares/food/createFood')
 const updateFoodMW = require('../middlewares/food/updateFood')
 const renderMW = require('../middlewares/render')
 
@@ -12,27 +14,30 @@ module.exports = (app) => {
     foodModel: foodModel
   }
 
-  app.get('/foods',
+  app.use('/foods/new',
     authUserMW(objRepo),
     authAdminMW(objRepo),
-    getFoodListMW(objRepo),
-    renderMW(objRepo, 'foods'))
-
-  app.get('/foods/new',
-    authUserMW(objRepo),
-    authAdminMW(objRepo),
-    updateFoodMW(objRepo),
+    createFoodMW(objRepo),
     renderMW(objRepo, 'newfood'))
 
-  app.get('/foods/:foodid',
-    authUserMW(objRepo),
-    authAdminMW(objRepo),
-    updateFoodMW(objRepo),
-    renderMW(objRepo, 'newfood'))
-
-  app.use('/foods/delete',
+  app.use('/foods/:foodid/delete',
     authUserMW(objRepo),
     authAdminMW(objRepo),
     deleteFoodMW(objRepo),
+    (req, res) => res.redirect('/foods')
+  )
+
+  app.use('/foods/:foodid',
+    authUserMW(objRepo),
+    authAdminMW(objRepo),
+    getFoodMW(objRepo),
+    updateFoodMW(objRepo),
+    renderMW(objRepo, 'newfood'))
+
+
+  app.use('/foods',
+    authUserMW(objRepo),
+    authAdminMW(objRepo),
+    getFoodListMW(objRepo),
     renderMW(objRepo, 'foods'))
 }
