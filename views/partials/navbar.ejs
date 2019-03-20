@@ -1,14 +1,22 @@
 <nav class="navbar navbar-expand-md navbar-dark bg-dark">
     <div class="container-fluid navbar-collapse">
         <div class="navbar-nav">
+            <% if (isUser) { %>
                 <a class="navbar-brand" href="/order">Order</a>
+            <% } else { %>
                 <a class="navbar-brand" href="/login">Login</a>
+            <% } %>
+            <% if (isAdm) { %>
                 <a class="nav-link" href="/foods">Foods</a>
                 <a class="nav-link" href="/events">Events</a>
+            <% } %>
         </div>
         <div class="navbar-nav">
+            <% if (isUser) { %>
                 <a class="nav-link" href="/logout">Log out</a>
+            <% } else { %>
                 <a class="nav-link" href="/register">Register</a>
+            <% } %>
         </div>
     </div>
 </nav>
