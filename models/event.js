@@ -3,5 +3,9 @@ const db = require('../config/db')
 
 module.exports = db.model('Event', {
   start: Date,
-  end: Date
+  end: Date,
+  orders: {
+    type: Number,
+    default: 0
+  }
 })

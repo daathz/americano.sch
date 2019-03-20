@@ -6,14 +6,11 @@ module.exports = (objRepo) => {
   const userModel = objRepo.userModel
 
   return (req, res, next) => {
-    req.session.userid = 112
-    req.session.admin = true
-    return next()
 
     //not enough parameter
     if ((typeof req.body === 'undefined') ||
       (typeof req.body.email === 'undefined') ||
-      (typeof rceq.body.password === 'undefined')) {
+      (typeof req.body.password === 'undefined')) {
       return next()
     }
 

@@ -15,7 +15,7 @@ module.exports = (objRepo) => {
     userModel.findOne({
       email: req.body.email
     }, (err, user) => {
-      if (user !== null) {
+      if (user.email === req.body.email) {
         return next()
       }
     })
