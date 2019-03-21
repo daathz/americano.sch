@@ -31,7 +31,9 @@ module.exports = (objRepo) => {
 
     eventModel.findOne({}, (err, event) => {
       if (err || !event) return next(err)
+      //FIXME
       order._event = event._id
+      //FIXME
       event.orders += 1
       event.save((err, result) => {
         if (err) return next(err)
