@@ -2,6 +2,7 @@ const authUserMW = require('../middlewares/user/authUser')
 const createOrderMW = require('../middlewares/order/createOrder')
 const updateOrderMW = require('../middlewares/order/updateOrder')
 const getOrderOfUserMW = require('../middlewares/order/getOrdersOfUser')
+const getOrderByIdMW = require('../middlewares/order/getOrderById')
 const deleteOrderMW = require('../middlewares/order/deleteOrder')
 const getFoodListMW = require('../middlewares/food/getFoods')
 const renderMW = require('../middlewares/render')
@@ -27,6 +28,7 @@ module.exports = (app) => {
   app.use('/order/:orderid',
     authUserMW(objRepo),
     getFoodListMW(objRepo),
+    getOrderByIdMW(objRepo),
     updateOrderMW(objRepo),
     renderMW(objRepo, 'modorder'))
 

@@ -9,28 +9,28 @@ module.exports = (objRepo) => {
 
     if ((typeof req.body === 'undefined') ||
       (Object.keys(req.body).length === 0)) {
-      orderModel.findOne({_id: req.params.orderid}, (err, order) => {
-        res.tpl.order = order
-        if (err) return next(err)
-        return next()
-      })
+      return next()
     }
 
-    let mods = []
+    let modFoods = []
+    let modComment = req.body.comment
     delete req.body['comment']
     Object.keys(req.body).forEach((key) => {
       if (req.body[key] !== '' && req.body[key] >= 1) {
-        mods.push({name: key, quantity: req.body[key]})
+        modFoods.push({name: key, quantity: req.body[key]})
       }
     })
 
-    console.log(mods)
-    orderModel.findOneAndUpdate({_id: req.params.orderid}, {foods: mods},
-      (err, order) => {
-        if (err) return next(err)
-        res.tpl.order = order
-        return next()
-      }
-    )
+    if (modFoods === 0) return next()
+    console.log(modFoods)
+
+    orderModel.findOneAndUpdate({_id: req.params.orderid}, {
+      foods: modFoods,
+      comment: modComment
+    },
+    (err, order) => {
+      if (err) return next(err)
+      res.redirect('/order')
+    })
   }
 }

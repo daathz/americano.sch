@@ -13,6 +13,8 @@
                             <% order.foods.forEach((orderedFood) => { if (orderedFood.name === food.name) { %>
                                 <input id="<%= food.name %>" class="form-control" type="number" name="<%= food.name %>" placeholder="0"
                                        value="<%= orderedFood.quantity %>">
+                            <% } else { %>
+                                <input id="<%= food.name %>" class="form-control" type="number" name="<%= food.name %>" placeholder="0">
                             <% }}) %>
                         </div>
                     </div>
