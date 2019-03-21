@@ -10,23 +10,32 @@
                 <th>Comments</th>
                 <th></th>
             </tr>
-            <% orders.forEach(function(order) { %>
-                <tr>
-                    <td><%= order.name %></td>
-                    <td><%= order.room %></td>
-                    <td><%= order.food %></td>
-                    <td><%= order.quantity %></td>
-                    <td><%= order.comment %></td>
-                    <td><a href="/order/<%= order._id %>">
-                            <button class="btn btn-info">Update</button>
-                        </a>
-                        <a href="/order/delete/<%= order._id %>">
-                            <button class="btn btn-danger">
-                                Delete
-                            </button>
-                        </a></td>
-                </tr>
-            <% }) %>
+            <% if (orders.length !== 0) { %>
+                <% orders.forEach(function(order) { %>
+                    <tr>
+                        <td><%= order.customer %></td>
+                        <td><%= order.room %></td>
+                        <td>
+                            <% order.foods.forEach((food) => { %>
+                                <%= food.name %><br>
+                            <% }) %>
+                        </td>
+                        <td>
+                            <% order.foods.forEach((food) => { %>
+                                <%= food.quantity %><br>
+                            <% }) %>
+                        </td>
+                        <td><%= order.comment %></td>
+                        <td><a href="/order/<%= order._id %>">
+                                <button class="btn btn-info">Update</button>
+                            </a>
+                            <a href="/order/<%= order._id %>/delete">
+                                <button class="btn btn-danger">
+                                    Delete
+                                </button>
+                            </a></td>
+                    </tr>
+            <% })} %>
         </table>
     </div>
 </div>

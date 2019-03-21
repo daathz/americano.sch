@@ -14,11 +14,6 @@ module.exports = (app) => {
     orderModel: orderModel
   }
 
-  app.get('/events',
-    authUserMW(objRepo),
-    authAdminMW(objRepo),
-    getEventsMW(objRepo),
-    renderMW(objRepo, 'events'))
 
   app.use('/events/new',
     authUserMW(objRepo),
@@ -31,4 +26,10 @@ module.exports = (app) => {
     authAdminMW(objRepo),
     getOrdersMW(objRepo),
     renderMW(objRepo, 'orders'))
+
+  app.get('/events',
+    authUserMW(objRepo),
+    authAdminMW(objRepo),
+    getEventsMW(objRepo),
+    renderMW(objRepo, 'events'))
 }
