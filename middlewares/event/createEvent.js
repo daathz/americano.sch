@@ -15,10 +15,10 @@ module.exports = (objRepo) => {
         start: req.body.startevent,
         end: req.body.endevent
       }, (err, event) => {
+        if (err) return next(err)
         return res.redirect('/events')
       })
     } else {
-      console.log('lel')
       return next()
     }
   }

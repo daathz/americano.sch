@@ -8,7 +8,7 @@ module.exports = (objRepo) => {
   return (req, res, next) => {
 
     foodModel.findOneAndDelete({ _id: req.params.foodid}, (err, result) => {
-      if (err) console.log(err)
+      if (err) next(err)
       return next()
     })
   }

@@ -22,7 +22,6 @@ module.exports = (objRepo) => {
     })
 
     if (modFoods === 0) return next()
-    console.log(modFoods)
 
     orderModel.findOneAndUpdate({_id: req.params.orderid}, {
       foods: modFoods,

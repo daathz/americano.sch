@@ -3,7 +3,6 @@ module.exports = (objRepo) => {
   let orderModel = objRepo.orderModel
   let userModel = objRepo.userModel
   let eventModel = objRepo.eventModel
-  let foodModel = objRepo.foodModel
 
   return (req, res, next) => {
 
@@ -31,11 +30,13 @@ module.exports = (objRepo) => {
     if (order.foods.length === 0) return next()
 
     eventModel.findOne({}, (err, event) => {
+      if (err || !event) return next(err)
       order._event = event._id
       event.orders += 1
       event.save((err, result) => {
-        console.log(order)
+        if (err) return next(err)
         order.save((err, order) => {
+          if (err) return next(err)
           res.redirect('/order')
         })
       })
