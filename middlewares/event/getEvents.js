@@ -1,3 +1,5 @@
+const moment = require('moment')
+
 module.exports = (objRepo) => {
 
   let eventModel = objRepo.eventModel
@@ -6,7 +8,20 @@ module.exports = (objRepo) => {
 
     res.tpl.events = []
     eventModel.find({}, (err, events) => {
-      res.tpl.events = events
+      res.tpl.events = []
+      events.forEach((event) => {
+        let startDate = (moment(event.start)
+          .format('YYYY-MM-DD HH:mm'))
+        let endDate = (moment(event.end)
+          .format('YYYY-MM-DD HH:mm'))
+        res.tpl.events.push({
+          start: startDate,
+          end: endDate,
+          _id: event._id,
+          orders: event.orders
+        })
+
+      })
       return next()
     })
   }
