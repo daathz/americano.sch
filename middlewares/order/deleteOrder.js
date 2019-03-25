@@ -8,24 +8,23 @@ module.exports = (objRepo) => {
 
   return (req, res, next) => {
 
-    orderModel.findById(req.params.orderid, (err, order) => {
-      if ((order._user === req.session.userid) || req.session.admin) {
-        orderModel.findOne({ _id: req.params.orderid }, (err, order) => {
-          if (err) return next(err)
-          let eventid = order._event
-          orderModel.remove({ _id: req.params.orderid }, (err) => {
-            if (err) return next(err)
-            eventModel.findOne({ _id: eventid }, (err, event) => {
-              if (err) return next(err)
-              event.orders -= 1
-              event.save((err) => {
-                if (err) return next(err)
-                return next()
-              })
-            })
-          })
+    let quantities = []
+    orderModel.findOne({_id: req.params.orderid}, (err, order) => {
+      if (err || !order) return next(err)
+      order.foods.forEach((food) => {
+        quantities.push(parseInt(food.quantity))
+      }) //good
+      eventModel.findOne({_id: order._event}, (err, event) => {
+        if (err || !event) return next(err)
+        quantities.forEach((quantity) => {
+          event.orders -= quantity
         })
-      }
+        orderModel.deleteOne({_id: req.params.orderid}, (err) => {
+          if (err) return next(err)
+          event.save()
+          return next()
+        })
+      })
     })
   }
 }

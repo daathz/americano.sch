@@ -24,9 +24,11 @@ module.exports = (objRepo) => {
       })
 
     delete req.body['comment']
+    let quantities = []
     Object.keys(req.body).forEach((key) => {
       if (req.body[key] !== '' && req.body[key] >= 1) {
         order.foods.push({name: key, quantity: req.body[key]})
+        quantities.push(req.body[key])
       }
     })
 
@@ -42,7 +44,9 @@ module.exports = (objRepo) => {
         return next(err)
       }
       order._event = event._id
-      event.orders += 1
+      quantities.forEach((quantity => {
+        event.orders += parseInt(quantity)
+      }))
       event.save((err) => {
         if (err) return next(err)
         order.save((err) => {
