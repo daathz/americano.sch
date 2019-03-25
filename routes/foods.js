@@ -26,8 +26,8 @@ module.exports = (app) => {
     authUserMW(objRepo),
     authAdminMW(objRepo),
     deleteFoodMW(objRepo),
-    (req, res) => res.redirect('/foods')
-  )
+    getFoodListMW(objRepo),
+    renderMW(objRepo, 'foods'))
 
   app.use('/foods/:foodid',
     authUserMW(objRepo),
