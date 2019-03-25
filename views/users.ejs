@@ -1,0 +1,24 @@
+<% include ./partials/header %>
+<div class="row">
+    <div class="col-md-10 offset-md-1">
+        <table class="table table-hover table-striped">
+            <tr class="table-secondary">
+                <th>#</th>
+                <th>Name</th>
+                <th>Room</th>
+                <th>E-mail</th>
+                <th>Rank</th>
+            </tr>
+            <% users.forEach((user) => { %>
+                <tr>
+                    <td><%= user._id %></td>
+                    <td><%= user.name %></td>
+                    <td><%= user.room %></td>
+                    <td><%= user.email %></td>
+                    <td><%= user.admin ? 'Admin' : 'Customer' %></td>
+                </tr>
+            <% }) %>
+        </table>
+    </div>
+</div>
+<% include ./partials/footer %>
