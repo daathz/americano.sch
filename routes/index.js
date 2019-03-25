@@ -1,6 +1,9 @@
 const redirectMW = require('../middlewares/user/redirect')
+const authUserMW = require('../middlewares/user/authUser')
 const inverseAuthUserMW = require('../middlewares/user/inverseAuthUser')
 const createUserMW = require('../middlewares/user/createUser')
+const getUserMW = require('../middlewares/user/getUserById')
+const updateUserMW = require('../middlewares/user/updateUser')
 const loginUserMW = require('../middlewares/user/loginUser')
 const forgotPasswordMW = require('../middlewares/user/forgotPassword')
 const logoutUserMW = require('../middlewares/user/logoutUser')
@@ -31,6 +34,12 @@ module.exports = (app) => {
     inverseAuthUserMW(objRepo),
     forgotPasswordMW(objRepo),
     renderMW(objRepo, 'forgot'))
+
+  app.use('/settings',
+    authUserMW(objRepo),
+    getUserMW(objRepo),
+    updateUserMW(objRepo),
+    renderMW(objRepo, 'settings'))
 
   app.get('/logout',
     logoutUserMW(objRepo),

@@ -1,0 +1,30 @@
+<% include ./partials/header %>
+<div class="container">
+    <div class="row">
+        <div class="col-md-4 offset-md-4">
+            <h2>Your Settings</h2>
+            <form method="POST">
+                <div class="form-group">
+                    <label for="name">Name</label>
+                    <input type="text" class="form-control" id="name" name="name"
+                    value="<%= user.name %>">
+                </div>
+                <div class="form-group">
+                    <label for="room">Room Number</label>
+                    <input type="number" class="form-control" id="room" name="room"
+                           value="<%= user.room %>">
+                </div>
+                <div class="form-group">
+                    <label for="password">Password</label>
+                    <input type="password" class="form-control" id="password" name="password">
+                </div>
+                <div class="form-group">
+                    <label for="passwordC">Confirm Password</label>
+                    <input type="password" class="form-control" id="passwordC" name="passwordC">
+                </div>
+                <button type="submit" class="btn btn-primary btn-block" style="margin-right: 10px;">Update Profile</button>
+            </form>
+        </div>
+    </div>
+</div>
+<% include ./partials/footer %>
