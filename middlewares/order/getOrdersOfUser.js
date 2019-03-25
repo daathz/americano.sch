@@ -9,6 +9,7 @@ module.exports = (objRepo) => {
     res.tpl.orders = []
 
     orderModel.find({_user: req.session.userid}, (err, orders) => {
+      //TODO only list the orers of the acutal event
       if (err || !orders) next(err)
       res.tpl.orders = orders
       return next()

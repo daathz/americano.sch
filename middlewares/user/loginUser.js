@@ -19,6 +19,7 @@ module.exports = (objRepo) => {
       if (err || !user) return next(err)
 
       if (user.password !== req.body.password) {
+        res.tpl.error.push('Wrong e-mail address or password!')
         return next()
       }
 

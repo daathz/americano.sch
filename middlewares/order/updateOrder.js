@@ -22,7 +22,7 @@ module.exports = (objRepo) => {
       }
     })
 
-    if (modFoods === 0) return next()
+    if (modFoods.length === 0) return next()
 
     orderModel.findOneAndUpdate({_id: req.params.orderid}, {
       foods: modFoods,

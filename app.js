@@ -22,6 +22,7 @@ app.use(bodyParser.urlencoded({
 
 app.use((req, res, next) => {
   res.tpl = {}
+  res.tpl.error = []
   return next()
 })
 

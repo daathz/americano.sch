@@ -33,9 +33,14 @@ module.exports = (objRepo) => {
     if (order.foods.length === 0) return next()
 
     let currentDate = new Date()
-    eventModel.findOne({ start: { $lte: currentDate },
-      end: { $gte: currentDate }}, (err, event) => {
-      if (err || !event) return next(err)
+    eventModel.findOne({
+      start: {$lte: currentDate},
+      end: {$gte: currentDate}
+    }, (err, event) => {
+      if (err || !event) {
+        res.tpl.error.push('There is no event this time!')
+        return next(err)
+      }
       order._event = event._id
       event.orders += 1
       event.save((err) => {

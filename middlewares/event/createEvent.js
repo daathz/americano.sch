@@ -18,7 +18,10 @@ module.exports = (objRepo) => {
         start: {$lte: req.body.endevent},
         end: {$gte: req.body.startevent}
       }, (err, event) => {
-        if (err || event) return next()
+        if (err || event) {
+          res.tpl.error.push('Events cannot overlap each other!')
+          return next()
+        }
         else {
           eventModel.create({
             start: req.body.startevent,
@@ -29,6 +32,9 @@ module.exports = (objRepo) => {
           })
         }
       })
-    } else return next()
+    } else {
+      res.tpl.error.push('End date cannot be less than start date!')
+      return next()
+    }
   }
 }

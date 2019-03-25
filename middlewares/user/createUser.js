@@ -17,18 +17,21 @@ module.exports = (objRepo) => {
     userModel.findOne({
       email: req.body.email
     }, (err, user) => {
-      if (err || !user) return next(err)
-      return next()
-    })
-
-    let newUser = new userModel()
-    newUser.name = req.body.name
-    newUser.email = req.body.email
-    newUser.room = req.body.room
-    newUser.password = req.body.password
-    newUser.save((err) => {
       if (err) return next(err)
-      return next()
+      else if (user) {
+        res.tpl.error.push('Account with this email address already exists!')
+        return next()
+      } else {
+        let newUser = new userModel()
+        newUser.name = req.body.name
+        newUser.email = req.body.email
+        newUser.room = req.body.room
+        newUser.password = req.body.password
+        newUser.save((err) => {
+          if (err) return next(err)
+          return next()
+        })
+      }
     })
   }
 }
