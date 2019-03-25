@@ -2,15 +2,19 @@
 <div class="col-md-4 offset-md-4">
     <h2>Add Event</h2>
     <form method="POST">
-        <div class="form-group">
-            <label for="startEvent">Start of Event</label>
-            <input type="date" class="form-control" id="startEvent" name="startevent">
+        <div class="form-inline">
+            <label for="startDate">Start of Event</label>
+                <input type="date" class="form-control mx-md-2" id="startDate" name="startdate">
+                <input type="time" class="form-control" id="startTime" name="starttime">
         </div>
-        <div class="form-group">
-            <label for="endEvent">End of Event</label>
-            <input type="date" class="form-control" id="endEvent" name="endevent">
+        <br>
+        <div class="form-inline">
+            <label for="endDate">End of Event</label>
+            <input type="date" class="form-control mx-md-2" id="endDate" name="enddate">
+            <input type="time" class="form-control" id="endTime" name="endtime">
         </div>
-        <button type="submit" class="btn btn-primary btn-block" style="margin-right: 10px;">Create</button>
+        <br>
+        <button type="submit" class="btn btn-primary" style="margin-right: 10px;">Create</button>
     </form>
 </div>
 <% include ./partials/footer %>

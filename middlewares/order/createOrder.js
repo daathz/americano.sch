@@ -38,7 +38,7 @@ module.exports = (objRepo) => {
       end: {$gte: currentDate}
     }, (err, event) => {
       if (err || !event) {
-        res.tpl.error.push('There is no event this time!')
+        res.tpl.error.push('There is currently no event!')
         return next(err)
       }
       order._event = event._id
