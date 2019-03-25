@@ -17,7 +17,7 @@
   },
   "homepage": "https://github.com/daathz/americano.sch#readme",
   "devDependencies": {
-    "eslint": "^5.13.0"
+    "eslint": "^5.15.3"
   },
   "dependencies": {
     "body-parser": "^1.18.3",
