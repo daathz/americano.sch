@@ -29,9 +29,10 @@ module.exports = (objRepo) => {
 
     if (order.foods.length === 0) return next()
 
-    eventModel.findOne({}, (err, event) => {
+    let currentDate = new Date()
+    eventModel.findOne({ start: { $lte: currentDate },
+      end: { $gte: currentDate }}, (err, event) => {
       if (err || !event) return next(err)
-      //FIXME
       order._event = event._id
       //FIXME
       event.orders += 1
@@ -42,8 +43,6 @@ module.exports = (objRepo) => {
           res.redirect('/order')
         })
       })
-
-
     })
   }
 }
