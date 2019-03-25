@@ -28,3 +28,5 @@ userModel.findOne({email: 'super@admin.com'}, (err, user) => {
     admin.save()
   }
 })
+
+module.exports = userModel
