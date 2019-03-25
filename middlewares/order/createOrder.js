@@ -1,3 +1,6 @@
+/**
+ * Create an order for the user
+ */
 module.exports = (objRepo) => {
 
   let orderModel = objRepo.orderModel
@@ -34,11 +37,10 @@ module.exports = (objRepo) => {
       end: { $gte: currentDate }}, (err, event) => {
       if (err || !event) return next(err)
       order._event = event._id
-      //FIXME
       event.orders += 1
-      event.save((err, result) => {
+      event.save((err) => {
         if (err) return next(err)
-        order.save((err, order) => {
+        order.save((err) => {
           if (err) return next(err)
           res.redirect('/order')
         })

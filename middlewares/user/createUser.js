@@ -17,7 +17,7 @@ module.exports = (objRepo) => {
     userModel.findOne({
       email: req.body.email
     }, (err, user) => {
-      if (err) return next(err)
+      if (err || !user) return next(err)
       return next()
     })
 
@@ -27,6 +27,7 @@ module.exports = (objRepo) => {
     newUser.room = req.body.room
     newUser.password = req.body.password
     newUser.save((err) => {
+      if (err) return next(err)
       return next()
     })
   }

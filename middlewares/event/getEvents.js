@@ -1,3 +1,6 @@
+/**
+ * Get all of the events and send it tot the next middlewares to list them
+ */
 const moment = require('moment')
 
 module.exports = (objRepo) => {
@@ -8,6 +11,7 @@ module.exports = (objRepo) => {
 
     res.tpl.events = []
     eventModel.find({}, (err, events) => {
+      if (err || !events) return next(err)
       res.tpl.events = []
       events.forEach((event) => {
         let startDate = (moment(event.start)

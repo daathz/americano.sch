@@ -1,5 +1,5 @@
 /**
- * Create an order
+ * Update the selected order
  */
 //FIXME Bug when there is a deleted food in an order
 module.exports = (objRepo) => {
@@ -29,7 +29,7 @@ module.exports = (objRepo) => {
       comment: modComment
     },
     (err, order) => {
-      if (err) return next(err)
+      if (err || !order) return next(err)
       res.redirect('/order')
     })
   }

@@ -1,3 +1,6 @@
+/**
+ * Get the data of the selected order
+ */
 module.exports = (objRepo) => {
 
   let orderModel = objRepo.orderModel
@@ -6,7 +9,7 @@ module.exports = (objRepo) => {
 
     res.tpl.order = {}
     orderModel.findOne({ _id: req.params.orderid }, (err, order) => {
-      if (err) return next(err)
+      if (err || !order) return next(err)
       res.tpl.order = order
       return next()
     })

@@ -12,6 +12,9 @@ module.exports = (objRepo) => {
     foodModel.findByIdAndUpdate(req.params.foodid, {
       name: req.body.name,
       description: req.body.description
-    }, (err, food) => res.redirect('/foods'))
+    }, (err) => {
+      if (err) return next(err)
+      res.redirect('/foods')
+    })
   }
 }

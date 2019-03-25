@@ -9,7 +9,7 @@ module.exports = (objRepo) => {
 
     res.tpl.foods = []
     foodModel.find({}, (err, foods) => {
-      if (err) return next(err)
+      if (err || !foods) return next(err)
       res.tpl.foods = foods
       return next()
     })

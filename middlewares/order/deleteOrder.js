@@ -1,5 +1,5 @@
 /**
- * Delete a selected order if it is checked
+ * Delete a selected order by ID
  */
 module.exports = (objRepo) => {
 

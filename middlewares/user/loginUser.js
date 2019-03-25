@@ -7,31 +7,23 @@ module.exports = (objRepo) => {
 
   return (req, res, next) => {
 
-    //not enough parameter
     if ((typeof req.body === 'undefined') ||
       (typeof req.body.email === 'undefined') ||
       (typeof req.body.password === 'undefined')) {
       return next()
     }
 
-    //check email
     userModel.findOne({
       email: req.body.email
     }, (err, user) => {
-      if (err || !user) {
-        //Error
-        return next()
-      }
+      if (err || !user) return next(err)
 
-      //check password
       if (user.password !== req.body.password) {
         return next()
       }
 
       req.session.userid = user._id
-      if (user.admin) {
-        req.session.admin = true
-      }
+      if (user.admin) req.session.admin = true
       return res.redirect('/')
     })
   }

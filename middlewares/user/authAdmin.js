@@ -8,7 +8,6 @@ module.exports = (objRepo) => {
       (req.session.admin === false)) {
       return res.redirect('/')
     }
-    res.tpl.isAdm = true
     return next()
   }
 }

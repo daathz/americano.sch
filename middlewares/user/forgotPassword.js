@@ -13,6 +13,7 @@ module.exports = (objRepo) => {
 
     userModel.findOneAndUpdate({email: req.body.email}, {password: 'default'},
       (err, user) => {
+        if (err || !user) return next(user)
         return next()
       })
   }

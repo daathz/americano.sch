@@ -17,6 +17,9 @@ module.exports = (objRepo) => {
     let food = foodModel()
     food.name = req.body.name
     food.description = req.body.description
-    food.save((err, result) => res.redirect('/foods'))
+    food.save((err) => {
+      if (err) return next(err)
+      res.redirect('/foods')
+    })
   }
 }

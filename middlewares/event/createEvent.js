@@ -1,3 +1,6 @@
+/**
+ * Create an event if the start and end dates are correct
+ */
 module.exports = (objRepo) => {
 
   let eventModel = objRepo.eventModel
@@ -14,7 +17,7 @@ module.exports = (objRepo) => {
       eventModel.create({
         start: req.body.startevent,
         end: req.body.endevent
-      }, (err, event) => {
+      }, (err) => {
         if (err) return next(err)
         return res.redirect('/events')
       })
