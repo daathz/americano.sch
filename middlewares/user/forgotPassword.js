@@ -13,9 +13,12 @@ module.exports = (objRepo) => {
 
     userModel.findOneAndUpdate({email: req.body.email}, {password: 'default'},
       (err, user) => {
-        if (err || !user) return next(user)
+        if (err || !user) {
+          res.tpl.error.push('There is no user with this email address')
+          return next(user)
+        }
         else {
-          res.tpl.info = 'Your password is set to: "default"'
+          res.tpl.info.push('Your password is set to: "default"')
           return next()
         }
       })

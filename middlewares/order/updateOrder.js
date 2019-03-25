@@ -1,7 +1,6 @@
 /**
  * Update the selected order
  */
-//FIXME Bug when there is a deleted food in an order
 module.exports = (objRepo) => {
 
   let orderModel = objRepo.orderModel

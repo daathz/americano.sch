@@ -8,10 +8,12 @@ const updateFoodMW = require('../middlewares/food/updateFood')
 const renderMW = require('../middlewares/render')
 
 const foodModel = require('../models/food')
+const eventModel = require('../models/event')
 
 module.exports = (app) => {
   let objRepo = {
-    foodModel: foodModel
+    foodModel: foodModel,
+    eventModel: eventModel
   }
 
   app.use('/foods/new',

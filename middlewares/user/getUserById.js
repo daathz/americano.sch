@@ -1,3 +1,6 @@
+/**
+ * Get the users data and send to the next middleware
+ */
 module.exports = (objRepo) => {
 
   let userModel = objRepo.userModel

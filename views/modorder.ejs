@@ -10,10 +10,10 @@
                         <p class="card-text"><%= food.description %></p>
                         <div class="form-inline">
                             <label for="<%= food.name %>" style="margin-right: 10px;">Quantity</label>
-                            <% order.foods.forEach((orderedFood) => { if (orderedFood.name === food.name) { %>
+                            <% order.foods.forEach((orderedFood) => { %>
                                 <input id="<%= food.name %>" class="form-control" type="number" name="<%= food.name %>" placeholder="0"
-                                       value="<%= orderedFood.quantity %>">
-                            <% }}) %>
+                                       value="<%= orderedFood.name === food.name ? orderedFood.quantity : 0 %>">
+                            <% }) %>
                         </div>
                     </div>
                 </div>

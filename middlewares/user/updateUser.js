@@ -1,3 +1,6 @@
+/**
+ * Update the users data if the password confirmation is successful
+ */
 module.exports = (objRepo) => {
 
   let userModel = objRepo.userModel
