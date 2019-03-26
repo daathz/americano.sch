@@ -13,7 +13,7 @@ module.exports = (objRepo) => {
       if (err || !order) return next(err)
       order.foods.forEach((food) => {
         quantities.push(parseInt(food.quantity))
-      }) //good
+      })
       eventModel.findOne({_id: order._event}, (err, event) => {
         if (err || !event) return next(err)
         quantities.forEach((quantity) => {

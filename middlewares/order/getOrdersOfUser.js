@@ -4,15 +4,25 @@
 module.exports = (objRepo) => {
 
   let orderModel = objRepo.orderModel
+  let eventModel = objRepo.eventModel
 
   return (req, res, next) => {
     res.tpl.orders = []
+    let currentDate = new Date()
 
-    orderModel.find({_user: req.session.userid}, (err, orders) => {
-      //TODO only list the orders of the actual event
-      if (err || !orders) next(err)
-      res.tpl.orders = orders
-      return next()
+    eventModel.findOne({
+      start: {$lte: currentDate},
+      end: {$gte: currentDate}
+    }, (err, event) => {
+      if (err || !event) return next(err)
+      orderModel.find({
+        _user: req.session.userid,
+        _event: event
+      }, (err, orders) => {
+        if (err || !orders) return next(err)
+        res.tpl.orders = orders
+        return next()
+      })
     })
   }
 }
