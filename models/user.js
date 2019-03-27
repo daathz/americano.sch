@@ -25,7 +25,9 @@ userModel.findOne({email: 'super@admin.com'}, (err, user) => {
     admin.password = 'superadmin'
     admin.room = 1004
     admin.admin = true
-    admin.save()
+    admin.save((err) => {
+      if (!err) console.log('Admin user created')
+    })
   }
 })
 
