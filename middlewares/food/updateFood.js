@@ -1,3 +1,6 @@
+/**
+ * Update the name and description of the selected food
+ */
 module.exports = (objRepo) => {
 
   let foodModel = objRepo.foodModel

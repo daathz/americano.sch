@@ -4,7 +4,9 @@
   "description": "",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "start": "node app.js",
+    "test": "mocha --recursive",
+    "cover": "istanbul cover node_modules/.bin/_mocha"
   },
   "repository": {
     "type": "git",
@@ -17,7 +19,10 @@
   },
   "homepage": "https://github.com/daathz/americano.sch#readme",
   "devDependencies": {
-    "eslint": "^5.15.3"
+    "chai": "^4.2.0",
+    "eslint": "^5.15.3",
+    "istanbul": "^0.4.5",
+    "mocha": "^6.0.2"
   },
   "dependencies": {
     "body-parser": "^1.18.3",

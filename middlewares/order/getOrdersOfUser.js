@@ -1,5 +1,5 @@
 /**
- * Get the orders the authenticated user
+ * Get the orders of the authenticated user
  */
 module.exports = (objRepo) => {
 
