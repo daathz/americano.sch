@@ -7,5 +7,9 @@ module.exports = db.model('Event', Schema({
   orders: {
     type: Number,
     default: 0
+  },
+  maxOrders: {
+    type: Number,
+    min: 1
   }
 }))

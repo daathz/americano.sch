@@ -13,7 +13,8 @@ module.exports = (objRepo) => {
       (typeof req.body.startdate === 'undefined') ||
       (typeof req.body.starttime === 'undefined') ||
       (typeof req.body.enddate === 'undefined') ||
-      (typeof req.body.endtime === 'undefined')) {
+      (typeof req.body.endtime === 'undefined') ||
+      (typeof req.body.maxorder === 'undefined')) {
       return next()
     }
 
@@ -22,26 +23,32 @@ module.exports = (objRepo) => {
     let endevent = moment(req.body.enddate + ' ' + req.body.endtime,
       'YYYY-MM_DD HH:mm')
 
-    if (startevent < endevent) {
-      eventModel.findOne({
-        start: {$lte: endevent},
-        end: {$gte: startevent}
-      }, (err, event) => {
-        if (err || event) {
-          res.tpl.error.push('Events cannot overlap each other!')
-          return next()
-        } else {
-          eventModel.create({
-            start: startevent,
-            end: endevent
-          }, (err) => {
-            if (err) return next(err)
-            res.redirect('/events')
-          })
-        }
-      })
+    if (req.body.maxorder > 1) {
+      if (startevent < endevent) {
+        eventModel.findOne({
+          start: {$lte: endevent},
+          end: {$gte: startevent}
+        }, (err, event) => {
+          if (err || event) {
+            res.tpl.error.push('Events cannot overlap each other!')
+            return next()
+          } else {
+            eventModel.create({
+              start: startevent,
+              end: endevent,
+              maxOrders: req.body.maxorder
+            }, (err) => {
+              if (err) return next(err)
+              res.redirect('/events')
+            })
+          }
+        })
+      } else {
+        res.tpl.error.push('End date cannot be less than start date!')
+        return next()
+      }
     } else {
-      res.tpl.error.push('End date cannot be less than start date!')
+      res.tpl.error.push('Max number must be at least 1!')
       return next()
     }
   }

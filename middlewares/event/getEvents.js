@@ -22,9 +22,9 @@ module.exports = (objRepo) => {
           start: startDate,
           end: endDate,
           _id: event._id,
-          orders: event.orders
+          orders: event.orders,
+          maxOrders: event.maxOrders
         })
-
       })
       return next()
     })

@@ -11,7 +11,6 @@ const userModel = db.model('User', Schema({
   password: String,
   admin: {
     type: Boolean,
-    //for dev
     default: false
   }
 }))
