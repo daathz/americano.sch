@@ -27,14 +27,9 @@
                             <% }) %>
                         </td>
                         <td><%= order.comment %></td>
-                        <td><a href="/order/<%= order._id %>">
-                                <button class="btn btn-info">Update</button>
-                            </a>
-                            <a href="/order/<%= order._id %>/delete">
-                                <button class="btn btn-danger">
-                                    Delete
-                                </button>
-                            </a></td>
+                        <td><a href="/order/<%= order._id %>"><button class="btn btn-info">Update</button></a>
+                            <a href="/order/<%= order._id %>/delete"><button class="btn btn-danger">Delete</button></a>
+                        </td>
                     </tr>
                 <% }) %>
             </table>
