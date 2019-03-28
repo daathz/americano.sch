@@ -47,6 +47,10 @@ module.exports = (objRepo) => {
       quantities.forEach((quantity => {
         event.orders += parseInt(quantity)
       }))
+      if (event.orders > event.maxOrders) {
+        res.tpl.error.push('There is no more food for this event!')
+        return next()
+      }
       event.save((err) => {
         if (err) return next(err)
         order.save((err) => {
